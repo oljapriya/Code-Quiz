@@ -75,13 +75,9 @@ const quizData = [
 startBtn.addEventListener('click', startQuiz);
 	
 
-function deselectAnswers() {
-	answerEls.forEach(answerEls => answerEls.checked === false)
-}
 
 
 function loadQuiz() {
-	
 	deselectAnswers()
 
 	const currentQuizData = quizData[currentQuiz]
@@ -92,7 +88,13 @@ function loadQuiz() {
 	c_text.innerText = currentQuizData.c
 	d_text.innerText = currentQuizData.d
 }
+
+	function deselectAnswers() {
+		answerEls.forEach(answerEls => answerEls.checked = false)
+}
+
 loadQuiz();
+
 
 function getSelected() {
 	let answer
@@ -113,8 +115,9 @@ submitBtn.addEventListener('click', () => {
 		if (answer === quizData[currentQuiz].correct){
 			score++
 			scoreBox.innerHTML = score
-			currentQuiz++
+			
 		}
+		currentQuiz++
 
 		if (currentQuiz < quizData.length) {
 			loadQuiz()	
